@@ -4,3 +4,4 @@
 *.pkg
 out/
 .downloads/
+*.zip

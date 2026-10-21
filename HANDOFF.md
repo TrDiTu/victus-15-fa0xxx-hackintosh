@@ -65,7 +65,11 @@ logs cannot show kernel/GUI success. Success is the screen; failures are `panic-
   Immediate workaround: USB keyboard.
 - **Trackpad**: ELAN I2C HID `04F3:321A`; needs `-vi2c-force-polling` (set) and likely an
   `SSDT-XPS-I2C`-style GPIO pinning of its own.
-- **Wi-Fi/BT**: MediaTek — expected unusable. Use Ethernet or a supported USB dongle.
+- **Wi-Fi/BT**: MediaTek MT7921 `14C3:7961` (Wi-Fi) / `13D3:3567` (BT USB). Two maintained
+  projects now list both IDs in their match tables — `SimpleMtkWlan`/`AirportMtkWlan` v1.5.0 and
+  `SimpleMtkBtFw` v1.1.0. Not boot-tested on this laptop, but no longer "expected unusable";
+  releases downloaded and hash-verified. See `notes/mtk-wifi-bt.md`. Ethernet (RTL8111) works
+  today and is enough for the install — which is offline anyway.
 - **Acceleration**: none. Recovery runs on Apple's TGL driver without `NootedGreen`; the
   post-install accelerator path (Metal) is `src/NootedGreen` from the reference repo, built on
   macOS with Command Line Tools (`zsh install.sh`), tuned for Tahoe/RPL-P — needs adaptation.
@@ -73,9 +77,13 @@ logs cannot show kernel/GUI success. Success is the screen; failures are `panic-
 ## Next steps
 
 1. Test the built-in keyboard/trackpad with the current EFI (one boot).
-2. Build the **offline installer**: `notes/offline-installer-plan.md` (UnPlugged + gibMacOS).
-3. Decide where macOS is installed — the NVMe is fully allocated (see the plan's open question).
-4. After install: NootedGreen for Metal, then audio/brightness/`xe-res`-style tools.
+2. Build the **offline installer** stick: `notes/offline-installer-plan.md`,
+   `tools/make-offline-stick.sh` (dry-run by default). The 15.8.1 (24H32) package is downloaded
+   and verified; the SMBIOS-bearing `config.plist` is saved in `.downloads/recovery-backup/`.
+3. Install to `/dev/nvme0n1p3` (176.9 GB APFS, already formatted) — decided by the human, no
+   NVMe repartitioning.
+4. After install: NootedGreen for Metal, then Wi-Fi/BT (`notes/mtk-wifi-bt.md`), audio,
+   brightness, `xe-res`-style tools.
 
 ## Do not lose
 

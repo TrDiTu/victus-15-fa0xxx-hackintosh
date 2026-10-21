@@ -6,31 +6,24 @@ Display works **only** with the Tiger Lake iGPU spoof in `EFI/OC/config.plist`
 
 ## Live job already running (do not restart it)
 
-The full installer is downloading right now in another Kero pane (pane `rirt8dh`,
-parent session), not in this session:
-
-```
-macOS Sequoia 15.8.1 (24H32), InstallAssistant.pkg 15.66 GB
-source : gibMacOS --version 15 --no-interactive  (~/personal/gibMacOS)
-target : .downloads/            (git-ignored)
-log    : .downloads/gibmacos.log
-```
-
-Check progress with `kero read rirt8dh -n 20` or
-`tail -c 200 .downloads/gibmacos.log`; wait for it with
-`kero wait rirt8dh --exit`. When it finishes, verify the `.pkg` size/digest gibMacOS
-printed and record it in `notes/offline-installer-plan.md`.
+~~The full installer is downloading right now~~ — **done 2026-10-21 19:39**: gibMacOS reported
+`Downloaded 5 of 5` / `Failed: None`. `.downloads/InstallAssistant.pkg` =
+15,664,523,626 B, sha256 `e4532e3337431292a7f227fcde7eb57f7b907547e2a26b43d3aab5a3f6e44781`,
+XAR TOC + all 5 members digest-verified by `tools/verify-xar-pkg.py`. Details in
+`notes/offline-installer-plan.md`.
 
 ## Task queue
 
-1. **Verify the download** (above) and note the exact version/build in
-   `notes/offline-installer-plan.md`.
+1. ~~Verify the download~~ **done** (see above); `EXPECT_PKG_SHA256` for the stick script is that
+   sha256.
 2. **Fetch UnPlugged** (`github.com/corpnewt/UnPlugged`, `UnPlugged.command`) into
-   `.downloads/` and list it in the plan.
-3. **Draft the two-partition stick layout** in `notes/offline-installer-plan.md`
-   with exact commands: MBR, part 1 FAT32 1 GiB (`type=c`, EFI + `com.apple.recovery.boot`),
-   part 2 ExFAT rest (`type=7`), `mkfs.vfat -F 32 -n OPENCORE`, `mkfs.exfat -n UnPlugged`.
-   **Do not run them** — repartitioning `/dev/sda` needs the human's explicit go-ahead.
+   `.downloads/UnPlugged/` and list it in the plan.
+3. ~~Draft the two-partition stick layout~~ **drafted**: `notes/offline-installer-plan.md` +
+   `tools/make-offline-stick.sh` (dry-run by default, `--verify`, `--write`, refuses anything
+   that is not the USB stick, writes the SMBIOS-bearing `config.plist` from
+   `IDENTITY_CONFIG`). **Do not run `--write`** — repartitioning `/dev/sda` needs the human's
+   explicit go-ahead, and the stick is the only copy of `BaseSystem.dmg` (now also saved to
+   `.downloads/recovery-backup/`).
 4. **Keyboard/trackpad test needs the human.** `EFI/` now carries VoodooPS2Controller
    (+Keyboard/Mouse/Trackpad), VoodooI2C (+Services/GPIO/Input), VoodooI2CHID and
    `-vi2c-force-polling`, but it has never been booted. Ask for the result; if the built-in
@@ -46,7 +39,11 @@ printed and record it in `notes/offline-installer-plan.md`.
    placeholders — never commit real ones).
 7. **Before repartitioning `/dev/sda`:** it holds the only copy of Apple's recovery image
    (`BaseSystem.dmg`, 888 MB). Copy it to local disk first — with no network it cannot be
-   re-downloaded.
+   re-downloaded. **Done:** `.downloads/recovery-backup/` (image + chunklist + the
+   SMBIOS-bearing `config.plist.stick-working`).
+8. **Wi-Fi/BT are solved on paper**: `notes/mtk-wifi-bt.md` — both our IDs are in the match
+   tables of `SimpleMtkWlan` v1.5.0 and `SimpleMtkBtFw` v1.1.0, releases downloaded and
+   hash-verified into `.downloads/mtk/`. Post-install work, one boot test per change.
 
 ## Style
 

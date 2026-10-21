@@ -46,6 +46,10 @@ is impossible without a network. So: **copy both files off the stick to local di
 `sfdisk` touches `/dev/sda`**, and re-copy them into part 1 of the new layout.
 The stick also currently holds the seven `opencore-*.txt` logs — already in `logs/` in this repo.
 
+**Done 2026-10-21:** both files copied to `.downloads/recovery-backup/` (git-ignored),
+`sha256 BaseSystem.dmg = c9fff24b410ae134c6be17ebd4194e0ad3d73bb839a65f8d94c93a20fe97cd1e`
+(same on stick and on disk, 888,615,275 B).
+
 ## Steps
 
 1. Download on Linux: `git clone https://github.com/corpnewt/gibMacOS` and fetch the

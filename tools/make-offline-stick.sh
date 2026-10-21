@@ -250,7 +250,7 @@ if [ "$MODE" != write ]; then
   while read -r mp; do [ -n "$mp" ] && say "   would unmount $mp"; done < <(lsblk -rno MOUNTPOINTS "$DEV" | grep -v '^$' || true)
   say "   would run: printf 'label: dos\\nstart=$PART1_START, size=$PART1_SIZE, type=c, bootable\\nstart=$PART2_START, type=7\\n' | sudo sfdisk $DEV"
   say "   would run: sudo mkfs.vfat -F 32 -n $LABEL_EFI -i $VOL_ID $P1"
-  say "   would run: sudo mkfs.exfat -n $LABEL_DATA $P2"
+  say "   would run: sudo mkfs.exfat -n $LABEL_DATA -c 128K $P2"
   say "   would run: mount $P1, copy EFI/ and com.apple.recovery.boot/, diff -r"
   say "   would run: mount $P2, copy InstallAssistant.pkg and UnPlugged.command, sha256 both"
   exit 0
@@ -274,7 +274,9 @@ for attempt in 1 2 3; do
   sleep 2
 done
 unmount_dev; udevadm settle
-sudo mkfs.exfat -n "$LABEL_DATA" "$P2" || die "could not format $P2."
+# UnPlugged's README warns that macOS struggles to mount ExFAT volumes with an allocation unit
+# above 1024 KB, so pin the cluster size instead of trusting the default.
+sudo mkfs.exfat -n "$LABEL_DATA" -c 128K "$P2" || die "could not format $P2."
 udevadm settle
 say "   formatted $P1 (FAT32 $LABEL_EFI) and $P2 (ExFAT $LABEL_DATA)"
 

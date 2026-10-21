@@ -104,12 +104,25 @@ the repo config, so the new stick boots with a real SMBIOS; the repo stays scrub
    **Scripted (drafted, never run) in `tools/make-offline-stick.sh`** — dry-run by default,
    `--verify` to check a finished stick, `--write` to do it. Needs the human's go-ahead.
 3. Copy EFI + com.apple.recovery.boot to part 1; InstallAssistant.pkg + UnPlugged.command to part 2.
+   `UnPlugged.command` is fetched: `.downloads/UnPlugged/` (clone of corpnewt/UnPlugged, HEAD
+   `e7e0696 "Update wording"`, one 26,931 B script + README, 168 KiB total).
 4. Boot recovery (this EFI boots it), Disk Utility → check the APFS container on `nvme0n1p3`,
    add/erase a volume there (not a new partition on another disk).
+   **`nvme0n1` also holds the Linux root — never `diskutil eraseDisk`, never erase the device).**
+   Use `diskutil list` to find the container that lives on `disk0s3` and operate on that
+   container/volume only (`diskutil apfs addVolume <container> APFS macOS`, or erase just that
+   volume). If in doubt, stop and ask.
 5. Terminal: Sonoma+ recovery does not mount ExFAT automatically —
-   `diskutil list physical`, then `/sbin/mount_exfat /dev/diskXsY /Volumes/UnPlugged`.
+   `diskutil list physical`, then `/sbin/mount_exfat /dev/diskXsY /Volumes/UnPlugged`
+   (`/sbin/mount_msdos` for a FAT32 volume). UnPlugged's README documents this.
 6. `cd /Volumes/UnPlugged && ./UnPlugged.command`, pick the InstallAssistant, choose the
-   target volume, `y`. It builds Install macOS.app and starts the offline install.
+   target volume, `y`. Choose **"Fully expand InstallAssistant.pkg"**, not "extract from
+   BaseSystem.dmg": our `BaseSystem.dmg` is the Sequoia one (Darwin 24), and the extract path is
+   the one that needs an older recovery image alongside the package. The script then builds
+   `Install macOS.app` and launches the installer — keep the Terminal open, closing it kills the
+   install.
+7. UnPlugged needs no network: `UnPlugged.command` contains no download code (only a URL in a
+   help message), which is why this whole path works offline.
 
 ## Open questions
 

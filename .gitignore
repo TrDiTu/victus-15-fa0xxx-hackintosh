@@ -3,3 +3,4 @@
 *.chunklist
 *.pkg
 out/
+.downloads/

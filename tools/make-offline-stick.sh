@@ -290,7 +290,7 @@ step "5/6 write the contents"
 mount_part "$P1"
 cleanup1() { sudo umount "$MNT" 2>/dev/null || udisksctl unmount -b "$P1" >/dev/null 2>&1 || true; }
 trap cleanup1 EXIT
-cp -a "$EFI/EFI" "$MNT"/
+cp -a "$EFI" "$MNT"/           # $EFI is this repo's EFI/ itself, so it lands as $MNT/EFI
 if [ -n "$IDENTITY_CONFIG" ] && [ -f "$IDENTITY_CONFIG" ]; then
   cp -a "$IDENTITY_CONFIG" "$MNT/EFI/OC/config.plist"
   say "   config.plist replaced with $IDENTITY_CONFIG (real SMBIOS, not the repo placeholders)"

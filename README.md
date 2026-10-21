@@ -12,3 +12,10 @@ Working notes, EFI and handoff for running macOS 15 Sequoia on an HP Victus 15-f
 - .xps-reference/ — reference hackintosh for the same GPU family (git-ignored)
 
 Read HANDOFF.md first; rules for agents/automation are in AGENTS.md.
+
+## Serial numbers were removed
+
+`PlatformInfo.Generic` here holds placeholders (`REPLACEME0001` / `REPLACEMEMLB01` / zero UUID and ROM),
+and the OpenCore logs were scrubbed the same way. Do not publish real serials: they identify a
+machine to Apple. Generate your own before booting — e.g. rebuild with 1401 (`p1401 build`) or use
+`PlatformInfo > Generic` with your own values. `notes/` explains what the rest of the config does.

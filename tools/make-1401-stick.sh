@@ -25,7 +25,7 @@ PART_START=2048                     # sectors (1 MiB), same as the app
 
 # ---- which stick -----------------------------------------------------------
 DEV=${DEV:-/dev/sda}
-EXPECT_SERIAL=${EXPECT_SERIAL-2410451035897387267}   # empty = accept any stick
+EXPECT_SERIAL=${EXPECT_SERIAL-CHANGEME-STICK-SERIAL}   # empty = accept any stick
 MIN_BYTES=$((2 * 1024 * 1024 * 1024))
 MAX_BYTES=$((256 * 1024 * 1024 * 1024))
 OS_PARTTYPES_GPT="c12a7328-f81f-11d2-ba4b-00a0c93ec93b 7c3457ef-0000-11aa-aa11-00306543ecac

@@ -4,7 +4,7 @@
 
 - **Never** write to `/dev/nvme0n1` (the Linux install: omarchy_root LUKS/btrfs, `/boot` ESP,
   `/home`). No repartitioning, no `mkfs`, no `dd` against it. Ask the human first, every time.
-- The USB test stick is `/dev/sda` (29.3 GB, serial `2410451035897387267`). Write it only with
+- The USB test stick is `/dev/sda` (29.3 GB, serial `CHANGEME-STICK-SERIAL`). Write it only with
   `tools/make-1401-stick.sh`, which re-checks serial, size, USB transport, mounted system paths
   and OS partition types before erasing.
 - Back up `EFI/OC/config.plist` (or `cp -a EFI EFI.bak`) before editing; this EFI is the only

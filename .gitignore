@@ -6,3 +6,4 @@ out/
 .downloads/
 *.zip
 .stick-serial
+EFI/OC/config.plist.bak-*

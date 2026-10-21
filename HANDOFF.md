@@ -55,6 +55,13 @@ logs cannot show kernel/GUI success. Success is the screen; failures are `panic-
   NVMeFix, RealtekRTL8111, RestrictEvents, BrightnessKeys, CpuTopologyRebuild, ECEnabler,
   USBToolBox + UTBDefault, XHCI-unsupported, and input: VoodooI2C (+ Services/GPIO/Input),
   VoodooI2CHID, VoodooPS2Controller (+ Keyboard/Mouse/Trackpad).
+- `Kernel > Quirks > SetApfsTrimTimeout` = **0** (was `-1`), requested by the human
+  2026-10-22 — disables the APFS TRIM timeout entirely, the usual fix when TRIM on this
+  Samsung PM9A1 stalls boot. Applied to `EFI/OC/config.plist`, the identity copy in
+  `.downloads/recovery-backup/config.plist.stick-working` and the stick's
+  `EFI/OC/config.plist`. `ocvalidate` (OpenCore 1.0.9): **No issues found**. Backup:
+  `EFI/OC/config.plist.bak-20261022-003140`. Note the key belongs in **Kernel** Quirks, not
+  UEFI — it already existed there with `-1`.
 - boot-args: `-v debug=0x100 keepsyms=1 amfi=0x80 -vi2c-force-polling`
   (`boot-args` is also in `NVRAM > Delete`, otherwise OpenCore ignores config changes).
 - ACPI: SSDT-SBUS/EC/GPI0/MCHC/PLUG-ALT/RTCAWAC/USB-Reset/USBX/XOSI.

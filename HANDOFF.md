@@ -59,6 +59,38 @@ logs cannot show kernel/GUI success. Success is the screen; failures are `panic-
   (`boot-args` is also in `NVRAM > Delete`, otherwise OpenCore ignores config changes).
 - ACPI: SSDT-SBUS/EC/GPI0/MCHC/PLUG-ALT/RTCAWAC/USB-Reset/USBX/XOSI.
 
+## Offline installer stick (built and verified 2026-10-21)
+
+`/dev/sda` is now the offline installer, not the old online recovery stick. Built with
+`tools/make-offline-stick.sh`, verified by `./tools/make-offline-stick.sh --verify` → **PASS**
+(pane `s7fsv2v`, exit 0):
+
+```
+MBR dos · p1 0x0C FAT32 OPENCORE 1 GiB · p2 0x07 ExFAT UnPlugged 28.3 GiB
+p1: EFI/OC/config.plist is the identity-bearing copy, everything else matches the repo byte for byte
+    com.apple.recovery.boot/BaseSystem.dmg 888,615,275 B (sha256 c9fff24b…, matches the backup) + .chunklist
+p2: InstallAssistant.pkg 15,664,523,626 B, sha256 e4532e33… verified **on the stick**
+    UnPlugged.command 26,931 B (corpnewt/UnPlugged e7e0696, no network code)
+```
+
+Not on the stick: the 4 `NVRM*` kexts (only ever existed on the old stick, all `Enabled=false`;
+kept in `.downloads/recovery-backup/EFI-stick-working/`) and any Wi-Fi/BT kexts
+(`notes/mtk-wifi-bt.md`, post-install).
+
+The old online recovery stick is gone (repartitioned). Reconstructable: `BaseSystem.dmg`,
+`chunklist`, its whole EFI (26M, 145 files) and the SMBIOS-bearing `config.plist` are in
+`.downloads/recovery-backup/`.
+
+**Next on the stick path:** BIOS Secure Boot off, F9, boot the USB → OpenCore → recovery →
+Disk Utility: make an APFS volume inside `disk0s3` (**never `eraseDisk`**, `disk0` holds Linux) →
+Terminal → `/sbin/mount_exfat /dev/diskXsY /Volumes/UnPlugged` →
+`cd /Volumes/UnPlugged && ./UnPlugged.command` → "Fully expand InstallAssistant.pkg".
+
+Incident worth remembering: the first `--write` (run from another pane) partitioned and formatted
+fine, then died on `cp .../EFI/EFI` — `$EFI` is already this repo's `EFI/`, so the copy source had
+to be `$EFI`. Fixed in `b12bec5`. Nothing was lost, because the old stick's EFI and the recovery
+image had been backed up first.
+
 ## Known gaps
 
 - **Keyboard**: built-in is PS/2 — the input kexts are now in the EFI but **not yet boot-tested**.

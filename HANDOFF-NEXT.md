@@ -18,12 +18,12 @@ XAR TOC + all 5 members digest-verified by `tools/verify-xar-pkg.py`. Details in
    sha256.
 2. **Fetch UnPlugged** (`github.com/corpnewt/UnPlugged`, `UnPlugged.command`) into
    `.downloads/UnPlugged/` and list it in the plan.
-3. ~~Draft the two-partition stick layout~~ **drafted**: `notes/offline-installer-plan.md` +
-   `tools/make-offline-stick.sh` (dry-run by default, `--verify`, `--write`, refuses anything
-   that is not the USB stick, writes the SMBIOS-bearing `config.plist` from
-   `IDENTITY_CONFIG`). **Do not run `--write`** — repartitioning `/dev/sda` needs the human's
-   explicit go-ahead, and the stick is the only copy of `BaseSystem.dmg` (now also saved to
-   `.downloads/recovery-backup/`).
+3. ~~Draft the two-partition stick layout~~ **done and built**: `tools/make-offline-stick.sh`
+   produced `/dev/sda` (MBR, 1 GiB FAT32 `OPENCORE` + 28.3 GiB ExFAT `UnPlugged`) and
+   `--verify` confirms it (package sha256 re-checked **on the stick**, EFI byte-for-byte, recovery
+   image against the backup). Details and the `EFI/EFI` copy bug that broke the first `--write`
+   are in `HANDOFF.md`. The old 1401 stick's EFI + recovery image are backed up in
+   `.downloads/recovery-backup/`.
 4. **Keyboard/trackpad test needs the human.** `EFI/` now carries VoodooPS2Controller
    (+Keyboard/Mouse/Trackpad), VoodooI2C (+Services/GPIO/Input), VoodooI2CHID and
    `-vi2c-force-polling`, but it has never been booted. Ask for the result; if the built-in

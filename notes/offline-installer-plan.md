@@ -3,6 +3,12 @@
 Tool: github.com/corpnewt/UnPlugged + gibMacOS. UnPlugged runs **inside** the recovery
 environment from a second partition; gibMacOS (Python) can download on Linux.
 
+## Status: the stick is built and verified (2026-10-21)
+
+`/dev/sda`: MBR, `sda1` 1 GiB FAT32 `OPENCORE` (EFI + `com.apple.recovery.boot`),
+`sda2` 28.3 GiB ExFAT `UnPlugged` (`InstallAssistant.pkg` + `UnPlugged.command`).
+`./tools/make-offline-stick.sh --verify` → PASS. Everything below is the plan that produced it.
+
 ## Download: done and verified (2026-10-21)
 
 | | |

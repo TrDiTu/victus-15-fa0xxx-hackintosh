@@ -86,3 +86,27 @@ RTL8111 works via `RealtekRTL8111.kext`. Once macOS runs:
 3. Copy the zips into the repo? No — `*.zip` is not ignored, so they stay in `.downloads/` and
    only their hashes are recorded here.
 4. Every attempt: back up `EFI/`, one change at a time, record the boot log in `HANDOFF.md`.
+
+## Applied 2026-10-22 (macOS is installed; first Wi-Fi attempt)
+
+`AirportMtkWlan.kext` 1.5.0 (Sequoia build) is in `EFI/OC/Kexts/` and enabled in
+`Kernel > Add` with `MinKernel 24.2.0` / `MaxKernel 24.99.99`, on both the repo config and the
+offline stick's `EFI/OC/config.plist`. `SimpleMtkWlan.kext` is also copied but **disabled** — one
+of the two only, ever. `ocvalidate`: No issues found. Backups:
+`.downloads/recovery-backup/config.plist.before-wifi` (stick, before this change) and
+`config.plist.before-rtl-off` (the step before).
+
+Why the native-menu kext first: it needs **no userspace app**, and this machine has no network
+until Wi-Fi works. The `SimpleMtkWlan` fallback needs the SimpleMTK menu-bar app, and
+`laobamac/SimpleMTKClient` publishes **no prebuilt release** (checked the GitHub releases API:
+empty), so that path would need Xcode on the Mac first — not available offline in a fresh install.
+
+Also disabled at the same time (stick only): `RealtekRTL8111.kext`, because the boot that failed
+after the install died in OpenCore right after its injection, with
+`OCAK: Patching invalid size … for com.apple.iokit.IONetworkingFamily` /
+`IOPCIFamily` and no `EXITBS:START`. Ethernet is not needed for an offline install; re-enable it
+once the machine boots normally.
+
+Rollback if the kext panics at boot: boot Linux (same laptop), then
+`cp .downloads/recovery-backup/config.plist.before-wifi /run/media/<user>/OPENCORE/EFI/OC/config.plist`
+or just set `Enabled=false` on the `AirportMtkWlan.kext` entry.

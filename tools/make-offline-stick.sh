@@ -36,7 +36,8 @@ PART1_SIZE=2097152                                     # sectors = exactly 1 GiB
 PART2_START=$((PART1_START + PART1_SIZE))              # 2099200
 
 MIN_PKG_BYTES=$((14 * 1000 * 1000 * 1000))             # sanity floor for a 15.66 GB package
-EXPECT_PKG_SHA256=${EXPECT_PKG_SHA256:-}               # optional; set once the download is verified
+# Verified 2026-10-21 (tools/verify-xar-pkg.py, TOC + all 5 members). Set to an empty string to skip.
+EXPECT_PKG_SHA256=${EXPECT_PKG_SHA256-e4532e3337431292a7f227fcde7eb57f7b907547e2a26b43d3aab5a3f6e44781}
 # The repo's config.plist has the machine identity scrubbed (REPLACEME serial/MLB/UUID/ROM), which
 # is what it must stay like in a public repo. The SMBIOS that actually booted lives in
 # .downloads/recovery-backup/config.plist.stick-working (git-ignored). Point IDENTITY_CONFIG at it
@@ -45,6 +46,11 @@ IDENTITY_CONFIG=${IDENTITY_CONFIG:-$REPO/.downloads/recovery-backup/config.plist
 
 # ---- which stick -----------------------------------------------------------
 DEV=${DEV:-/dev/sda}
+# The real stick serial must never be committed (public repo, AGENTS.md), so it lives in
+# .stick-serial (git-ignored) or in the environment:  EXPECT_SERIAL=<serial> ./make-offline-stick.sh
+if [ -z "${EXPECT_SERIAL+x}" ] && [ -f "$REPO/.stick-serial" ]; then
+  EXPECT_SERIAL=$(head -1 "$REPO/.stick-serial" | tr -d '[:space:]')
+fi
 EXPECT_SERIAL=${EXPECT_SERIAL-CHANGEME-STICK-SERIAL}   # empty = accept any stick
 MIN_BYTES=$((8 * 1000 * 1000 * 1000))
 MAX_BYTES=$((64 * 1000 * 1000 * 1000))

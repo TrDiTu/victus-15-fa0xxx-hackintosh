@@ -1,0 +1,468 @@
+{
+  "Motherboard": {
+    "Name": "HP VICTUS BY HP GAMING LAPTOP 15-FA0XXX",
+    "Chipset": "Alder Lake",
+    "Platform": "Laptop"
+  },
+  "BIOS": {
+    "Version": "F.34",
+    "Release Date": "03/19/2026",
+    "Firmware Type": "UEFI",
+    "Secure Boot": "Disabled",
+    "Above 4G Decoding": "Enabled"
+  },
+  "CPU": {
+    "Manufacturer": "Intel",
+    "Processor Name": "12th Gen Intel(R) Core(TM) i7-12700H",
+    "Codename": "Alder Lake-H",
+    "Core Count": "20",
+    "CPU Count": "01",
+    "SIMD Features": "SSE, SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AVX, AVX2"
+  },
+  "GPU": {
+    "NVIDIA Corporation GA107M [GeForce RTX 3050 Mobile]": {
+      "Manufacturer": "NVIDIA",
+      "Codename": "Unknown",
+      "Device Type": "Discrete GPU",
+      "Bus Type": "PCI",
+      "Device ID": "10DE-25A2",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x0)",
+      "ACPI Path": "\\_SB.PC00.PEG1.PEGP",
+      "Resizable BAR": "Enabled"
+    },
+    "Intel Corporation Alder Lake-P GT2 [Iris Xe Graphics]": {
+      "Manufacturer": "Intel",
+      "Codename": "Alder Lake-P",
+      "Device Type": "Integrated GPU",
+      "Bus Type": "PCI",
+      "Device ID": "8086-46A6",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x2,0x0)",
+      "ACPI Path": "\\_SB.PC00.GFX0",
+      "Resizable BAR": "Disabled"
+    }
+  },
+  "Monitor": {
+    "CMN1521": {
+      "Connector Type": "eDP",
+      "Resolution": "1920x1080",
+      "Connected GPU": "Intel Corporation Alder Lake-P GT2 [Iris Xe Graphics]"
+    }
+  },
+  "Network": {
+    "MEDIATEK Corp. MT7921 802.11ax PCIe Wireless Network Adapter [Filogic 330]": {
+      "Bus Type": "PCI",
+      "Device ID": "14C3-7961",
+      "Subsystem ID": "46821A3B"
+    },
+    "Realtek Semiconductor Co., Ltd. RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "10EC-8168",
+      "Subsystem ID": "8A4F103C"
+    }
+  },
+  "Sound": {
+    "Nvidia GPU a0 HDMI/DP": {
+      "Bus Type": "HDAUDIO",
+      "Device ID": "10DE-00A0",
+      "Subsystem ID": "103C8A4F",
+      "Controller Device ID": "10DE-2291",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)",
+      "ACPI Path": "\\_SB.PC00.HDAS",
+      "Audio Endpoints": [
+        "HDMI 0",
+        "HDMI 1",
+        "HDMI 2",
+        "HDMI 3"
+      ]
+    },
+    "IMC Networks Wireless_Device": {
+      "Bus Type": "USB",
+      "Device ID": "13D3-3567"
+    }
+  },
+  "USB Controllers": {
+    "Intel Corporation Alder Lake-P Thunderbolt 4 USB Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-461E",
+      "Subsystem ID": "00000000",
+      "PCI Path": "PciRoot(0x0)/Pci(0xd,0x0)",
+      "ACPI Path": "\\_SB.PC00.TXHC"
+    },
+    "Intel Corporation Alder Lake PCH USB 3.2 xHCI Host Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51ED",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x14,0x0)",
+      "ACPI Path": "\\_SB.PC00.XHCI"
+    }
+  },
+  "Input": {
+    "Compx 2.4G Dual Mode Mouse": {
+      "Bus Type": "USB",
+      "Device ID": "3554-F546"
+    },
+    "Video Bus": {
+      "Bus Type": "ACPI",
+      "Device": "VIDEOBUS",
+      "Device Type": "Keyboard"
+    },
+    "Intel HID events": {
+      "Bus Type": "ACPI",
+      "Device": "INTELHID",
+      "Device Type": "Keyboard"
+    },
+    "HP WMI hotkeys": {
+      "Bus Type": "ACPI",
+      "Device": "HPWMIHOT",
+      "Device Type": "Keyboard"
+    },
+    "ELAN0788:00 04F3:321A Mouse": {
+      "Bus Type": "ACPI",
+      "Device ID": "04F3-321A",
+      "Device Type": "I2C"
+    },
+    "AT Translated Set 2 keyboard": {
+      "Bus Type": "ACPI",
+      "Device ID": "0001-0001",
+      "Device Type": "PS/2"
+    }
+  },
+  "Storage Controllers": {
+    "Samsung Electronics Co Ltd NVMe SSD Controller PM9A1/PM9A3/980PRO": {
+      "Bus Type": "PCI",
+      "Device ID": "144D-A80A",
+      "Subsystem ID": "A801144D",
+      "PCI Path": "PciRoot(0x0)/Pci(0x6,0x0)/Pci(0x0,0x0)",
+      "ACPI Path": "\\_SB.PC00.PEG0.PEGP",
+      "Disk Drives": [
+        "SAMSUNG MZVL2512HCJQ-00BH1"
+      ]
+    }
+  },
+  "Bluetooth": {
+    "IMC Networks Wireless_Device": {
+      "Bus Type": "USB",
+      "Device ID": "13D3-3567"
+    }
+  },
+  "SD Controller": {
+    "Realtek Semiconductor Co., Ltd. RTS5288 PCIe SD UHS-I Card Reader controller": {
+      "Bus Type": "PCI",
+      "Device ID": "10EC-5228",
+      "Subsystem ID": "8A4F103C",
+      "ACPI Path": "\\_SB.PC00.RP05.PXSX"
+    }
+  },
+  "System Devices": {
+    "PNP0C14": {
+      "Bus Type": "ACPI",
+      "Device": "PNP0C14",
+      "ACPI Path": "\\_SB.WFDE"
+    },
+    "alarmtimer": {
+      "Bus Type": "PLATFORM",
+      "Device": "alarmtimer"
+    },
+    "rtsx_pci_sdmmc": {
+      "Bus Type": "PLATFORM",
+      "Device": "rtsx_pci_sdmmc",
+      "ACPI Path": "\\_SB.PC00.RP05.PXSX"
+    },
+    "iTCO_wdt": {
+      "Bus Type": "PLATFORM",
+      "Device": "iTCO_wdt"
+    },
+    "PNP0C0D": {
+      "Bus Type": "ACPI",
+      "Device": "PNP0C0D",
+      "ACPI Path": "\\_SB.LID0"
+    },
+    "PNP0C09": {
+      "Bus Type": "ACPI",
+      "Device": "PNP0C09",
+      "ACPI Path": "\\_SB.PC00.LPCB.EC0_"
+    },
+    "PNP0C0A": {
+      "Bus Type": "ACPI",
+      "Device": "PNP0C0A",
+      "ACPI Path": "\\_SB.BAT0"
+    },
+    "skl_hda_dsp_generic": {
+      "Bus Type": "PLATFORM",
+      "Device": "skl_hda_dsp_generic"
+    },
+    "ACPI0003": {
+      "Bus Type": "ACPI",
+      "Device": "ACPI0003",
+      "ACPI Path": "\\_SB.ADP1"
+    },
+    "acpi-cpufreq": {
+      "Bus Type": "PLATFORM",
+      "Device": "acpi-cpufreq"
+    },
+    "INT33A1": {
+      "Bus Type": "ACPI",
+      "Device": "INT33A1",
+      "ACPI Path": "\\_SB.PEPD"
+    },
+    "rtc_cmos": {
+      "Bus Type": "PLATFORM",
+      "Device": "rtc_cmos"
+    },
+    "INT33D3": {
+      "Bus Type": "ACPI",
+      "Device": "INT33D3",
+      "ACPI Path": "\\_SB.CIND"
+    },
+    "INTC1099": {
+      "Bus Type": "ACPI",
+      "Device": "INTC1099",
+      "ACPI Path": "\\_SB.PC00.LPCB.CWDT"
+    },
+    "LNXPWRBN": {
+      "Bus Type": "ACPI",
+      "Device": "LNXPWRBN"
+    },
+    "intel_rapl_msr": {
+      "Bus Type": "PLATFORM",
+      "Device": "intel_rapl_msr"
+    },
+    "USBC000": {
+      "Bus Type": "ACPI",
+      "Device": "USBC000",
+      "ACPI Path": "\\_SB.UBTC"
+    },
+    "PNP0C0C": {
+      "Bus Type": "ACPI",
+      "Device": "PNP0C0C",
+      "ACPI Path": "\\_SB.PWRB"
+    },
+    "ACPI000C": {
+      "Bus Type": "ACPI",
+      "Device": "ACPI000C",
+      "ACPI Path": "\\_SB.PAGD"
+    },
+    "rtc-efi": {
+      "Bus Type": "PLATFORM",
+      "Device": "rtc-efi"
+    },
+    "PNP0C14_#1": {
+      "Bus Type": "ACPI",
+      "Device": "PNP0C14",
+      "ACPI Path": "\\_SB.WFTE"
+    },
+    "INT340E": {
+      "Bus Type": "ACPI",
+      "Device": "INT340E",
+      "ACPI Path": "\\_SB.PTID"
+    },
+    "HPIC0004": {
+      "Bus Type": "ACPI",
+      "Device": "HPIC0004",
+      "ACPI Path": "\\_SB.PC00.IC04"
+    },
+    "i2c_designware": {
+      "Bus Type": "PLATFORM",
+      "Device": "i2c_designware",
+      "ACPI Path": "\\_SB.PC00.I2C0"
+    },
+    "INTC1055": {
+      "Bus Type": "ACPI",
+      "Device": "INTC1055",
+      "ACPI Path": "\\_SB.GPI0"
+    },
+    "dmic-codec": {
+      "Bus Type": "PLATFORM",
+      "Device": "dmic-codec"
+    },
+    "coretemp": {
+      "Bus Type": "PLATFORM",
+      "Device": "coretemp"
+    },
+    "TPM 2.0 Device": {
+      "Bus Type": "ACPI",
+      "Device": "MSFT0101",
+      "ACPI Path": "\\_SB.TPM_"
+    },
+    "ACPI000E": {
+      "Bus Type": "ACPI",
+      "Device": "ACPI000E",
+      "ACPI Path": "\\_SB.AWAC"
+    },
+    "PNP0103": {
+      "Bus Type": "ACPI",
+      "Device": "PNP0103",
+      "ACPI Path": "\\_SB.PC00.LPCB.HPET"
+    },
+    "INTC1070": {
+      "Bus Type": "ACPI",
+      "Device": "INTC1070",
+      "ACPI Path": "\\_SB.HIDD"
+    },
+    "efivars": {
+      "Bus Type": "PLATFORM",
+      "Device": "efivars"
+    },
+    "serial8250": {
+      "Bus Type": "PLATFORM",
+      "Device": "serial8250"
+    },
+    "i8042": {
+      "Bus Type": "PLATFORM",
+      "Device": "i8042"
+    },
+    "HPIC0003": {
+      "Bus Type": "ACPI",
+      "Device": "HPIC0003",
+      "ACPI Path": "\\_SB.PC00.IC03"
+    },
+    "hp-wmi": {
+      "Bus Type": "PLATFORM",
+      "Device": "hp-wmi"
+    },
+    "NVDA0820": {
+      "Bus Type": "ACPI",
+      "Device": "NVDA0820",
+      "ACPI Path": "\\_SB.NPCF"
+    },
+    "PNP0C14_#2": {
+      "Bus Type": "ACPI",
+      "Device": "PNP0C14",
+      "ACPI Path": "\\_SB.WMID"
+    },
+    "pcspkr": {
+      "Bus Type": "PLATFORM",
+      "Device": "pcspkr"
+    },
+    "idma64": {
+      "Bus Type": "PLATFORM",
+      "Device": "idma64",
+      "ACPI Path": "\\_SB.PC00.I2C0"
+    },
+    "Realtek Semiconductor Co., Ltd. RTS5288 PCIe SD UHS-I Card Reader controller": {
+      "Bus Type": "PCI",
+      "Device ID": "10EC-5228",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1c,0x0)/Pci(0x0,0x0)",
+      "ACPI Path": "\\_SB.PC00.RP05.PXSX"
+    },
+    "Intel Corporation Alder Lake PCI Express x4 Root Port #5": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51BC",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1c,0x0)",
+      "ACPI Path": "\\_SB.PC00.RP05"
+    },
+    "Intel Corporation 12th Gen Core Processor PCI Express x16 Controller #1": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-460D",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1,0x0)",
+      "ACPI Path": "\\_SB.PC00.PEG1"
+    },
+    "Intel Corporation Alder Lake PCH-P PCI Express Root Port #9": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51BF",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1c,0x7)",
+      "ACPI Path": "\\_SB.PC00.RP08"
+    },
+    "Intel Corporation 12th Gen Core Processor PCI Express x4 Controller #0": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-464D",
+      "Subsystem ID": "00000000",
+      "PCI Path": "PciRoot(0x0)/Pci(0x6,0x0)",
+      "ACPI Path": "\\_SB.PC00.PEG0"
+    },
+    "Intel Corporation Device 51be": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51BE",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1c,0x6)",
+      "ACPI Path": "\\_SB.PC00.RP07"
+    },
+    "Intel Corporation 12th Gen Core Processor Gaussian & Neural Accelerator": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-464F",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x8,0x0)",
+      "ACPI Path": "\\_SB.PC00.GNA0"
+    },
+    "Intel Corporation Alder Lake PCH eSPI Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-5182",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1f,0x0)",
+      "ACPI Path": "\\_SB.PC00.LPCB"
+    },
+    "Intel Corporation Alder Lake Innovation Platform Framework Processor Participant": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-461D",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x4,0x0)",
+      "ACPI Path": "\\_SB.PC00.TCPU"
+    },
+    "Intel Corporation Alder Lake PCH HECI Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51E0",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x16,0x0)",
+      "ACPI Path": "\\_SB.PC00.HECI"
+    },
+    "Intel Corporation Alder Lake-P PCH SPI Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51A4",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1f,0x5)"
+    },
+    "Intel Corporation Alder Lake PCH Serial IO I2C Controller #0": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51E8",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x15,0x0)",
+      "ACPI Path": "\\_SB.PC00.I2C0"
+    },
+    "Intel Corporation Alder Lake PCH-P High Definition Audio Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51C8",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1f,0x3)",
+      "ACPI Path": "\\_SB.PC00.HDAS"
+    },
+    "Intel Corporation 12th Gen Core Processor Host Bridge/DRAM Registers": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-4641",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x0,0x0)",
+      "ACPI Path": "\\_SB.PC00.MC__"
+    },
+    "Realtek Semiconductor Co., Ltd. RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "10EC-8168",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1c,0x7)/Pci(0x0,0x0)",
+      "ACPI Path": "\\_SB.PC00.RP08.PXSX"
+    },
+    "NVIDIA Corporation GA107 High Definition Audio Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "10DE-2291",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x1)"
+    },
+    "Intel Corporation Alder Lake PCH Shared SRAM": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51EF",
+      "Subsystem ID": "00000000",
+      "PCI Path": "PciRoot(0x0)/Pci(0x14,0x2)"
+    },
+    "Intel Corporation Alder Lake PCH-P SMBus Host Controller": {
+      "Bus Type": "PCI",
+      "Device ID": "8086-51A3",
+      "Subsystem ID": "8A4F103C",
+      "PCI Path": "PciRoot(0x0)/Pci(0x1f,0x4)",
+      "ACPI Path": "\\_SB.PC00.SBUS"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.xps-reference/
+*.dmg
+*.chunklist
+*.pkg
+out/

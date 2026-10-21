@@ -37,11 +37,16 @@ printed and record it in `notes/offline-installer-plan.md`.
    keyboard still does not type, iterate: check PS/2 presence in the DSDT, try
    `VoodooPS2Keyboard` alone, then add `SSDT-` GPIO pinning for the ELAN `04F3:321A` trackpad.
    USB keyboard is the interim workaround.
-5. **Where does macOS go?** Blocked on the human: the NVMe is fully allocated
-   (p1 2 GiB ESP, p2 177 GB ext4 `/home`, p3 298 GB LUKS+btrfs root). Needs a shrink, a
-   second disk, or an external SSD. Do not start any partitioning.
+5. **Where does macOS go?** **Answered by the human 2026-10-21:** the existing 176.9 GB APFS
+   partition `/dev/nvme0n1p3` (UUID `49644c18-…`) — already formatted on purpose. No shrink, no
+   new partition, nothing written to the NVMe by us. The installer media stays on the USB stick
+   only, and **there is no network available**, so everything must be on the stick. See
+   `notes/offline-installer-plan.md`.
 6. Every change: update `HANDOFF.md`, commit, `git push` (public repo, serials are
    placeholders — never commit real ones).
+7. **Before repartitioning `/dev/sda`:** it holds the only copy of Apple's recovery image
+   (`BaseSystem.dmg`, 888 MB). Copy it to local disk first — with no network it cannot be
+   re-downloaded.
 
 ## Style
 

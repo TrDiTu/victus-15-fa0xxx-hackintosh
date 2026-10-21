@@ -1,7 +1,7 @@
-# HP Victus 15-fa0xxx — macOS Sequoia (OpenCore)
+# HP Victus 15-fa0xxx — macOS Tahoe (OpenCore)
 
 Working notes, EFI and handoff for running macOS 15 Sequoia on an HP Victus 15-fa0xxx
-(board 8A4F, i7-12700H, Alder Lake-P Iris Xe + RTX 3050 Mobile).
+(board 8A4F, i7-12650H, Alder Lake-P Iris Xe + RTX 3050 Ti Mobile).
 
 - EFI/ — the **working** OpenCore EFI (Tiger Lake iGPU spoof; boots Apple's recovery to the GUI)
 - EFI-stock-1401/ — the unmodified 1401 build for this machine, kept for diffing

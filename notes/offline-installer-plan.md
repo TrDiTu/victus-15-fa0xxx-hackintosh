@@ -49,6 +49,11 @@ from Linux the chain is not verifiable, only the structure. `SharedSupport.dmg` 
   usable volume inside, or an empty container. If it has no volume, Disk Utility in recovery
   must add one (`APFS` container exists → `+` Volume) before UnPlugged/installer can target it.
   Treat as **assumed, unmeasured**.
+- **2026-10-21, from the human:** the 90 GB APFS container that used to live inside `nvme0n1p3`
+  no longer shows up in macOS `diskutil`, and the plan is to **re-create an ext4 partition in that
+  177 GB space later**. So the NVMe side is the human's call and may be rebuilt at any time —
+  macOS on `nvme0n1p3` would then be temporary. Nothing in this repo's stick work touches the
+  NVMe: the installer media is entirely on the USB stick.
 
 ## Stick layout (29.3 GiB = 31,457,280,000 B = 61,440,000 sectors)
 

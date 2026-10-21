@@ -24,12 +24,12 @@ XAR TOC + all 5 members digest-verified by `tools/verify-xar-pkg.py`. Details in
    image against the backup). Details and the `EFI/EFI` copy bug that broke the first `--write`
    are in `HANDOFF.md`. The old 1401 stick's EFI + recovery image are backed up in
    `.downloads/recovery-backup/`.
-4. **Keyboard/trackpad test needs the human.** `EFI/` now carries VoodooPS2Controller
-   (+Keyboard/Mouse/Trackpad), VoodooI2C (+Services/GPIO/Input), VoodooI2CHID and
-   `-vi2c-force-polling`, but it has never been booted. Ask for the result; if the built-in
-   keyboard still does not type, iterate: check PS/2 presence in the DSDT, try
-   `VoodooPS2Keyboard` alone, then add `SSDT-` GPIO pinning for the ELAN `04F3:321A` trackpad.
-   USB keyboard is the interim workaround.
+4. ~~Keyboard/trackpad test~~ **PASSED, reported by the human 2026-10-21**: the built-in PS/2
+   keyboard and the ELAN I2C trackpad both work in the recovery GUI from the new offline stick.
+   So `VoodooPS2Controller` + `VoodooI2C`/`VoodooGPIO`/`VoodooI2CHID` with
+   `-vi2c-force-polling` is the right set; no `SSDT-` GPIO pinning needed. Recorded in
+   `HANDOFF.md`. No OpenCore log captured for that boot yet — worth grabbing from the stick
+   later for the record.
 5. **Where does macOS go?** **Answered by the human 2026-10-21:** the existing 176.9 GB APFS
    partition `/dev/nvme0n1p3` (UUID `49644c18-…`) — already formatted on purpose. No shrink, no
    new partition, nothing written to the NVMe by us. The installer media stays on the USB stick

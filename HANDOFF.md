@@ -93,10 +93,16 @@ image had been backed up first.
 
 ## Known gaps
 
-- **Keyboard**: built-in is PS/2 — the input kexts are now in the EFI but **not yet boot-tested**.
-  Immediate workaround: USB keyboard.
-- **Trackpad**: ELAN I2C HID `04F3:321A`; needs `-vi2c-force-polling` (set) and likely an
-  `SSDT-XPS-I2C`-style GPIO pinning of its own.
+- **Keyboard**: ✅ **works** (reported by the human 2026-10-21, booted from the new offline stick's
+  recovery GUI). The built-in keyboard is PS/2 (`AT Translated Set 2 keyboard`, `0001-0001` in
+  `scan/Report.json`, `PS2K` in `scan/ACPI/DSDT.aml`), driven by `VoodooPS2Controller` +
+  `VoodooPS2Keyboard`. No boot log captured yet — the report is visual.
+- **Trackpad**: ✅ **works too** (same report) — ELAN I2C HID `04F3:321A` (`TPD0`/`ELAN0788` in the
+  DSDT) via `VoodooI2C` + `VoodooGPIO` + `VoodooI2CHID` with `-vi2c-force-polling`. So no
+  `SSDT-` GPIO pinning workaround is needed on this board.
+- **UnPlugged.command "is corrupted"**: not the file — source and stick copies are identical
+  (26,931 B, sha256 `92f2c3dc…`, LF, mode 755). macOS refuses to launch it; run it as
+  `cd /Volumes/UnPlugged && bash UnPlugged.command` instead of double-clicking.
 - **Wi-Fi/BT**: MediaTek MT7921 `14C3:7961` (Wi-Fi) / `13D3:3567` (BT USB). Two maintained
   projects now list both IDs in their match tables — `SimpleMtkWlan`/`AirportMtkWlan` v1.5.0 and
   `SimpleMtkBtFw` v1.1.0. Not boot-tested on this laptop, but no longer "expected unusable";
